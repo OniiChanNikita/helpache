@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'main_app\css\style.css' %}">
+	<title>Helpache</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+	<div class = navbar>
+		<div class = "nav_menu">
+			<div class = "nav_menu_bar">
+				<ul>
+					<li>Home</li>
+					<li>Helpache</li>
+					<li>Courses</li>
+					<li>People</li>
+				</ul>
+			</div>
+			<div class = "nav_menu_profile">
+				<ul>
+					<li>*Name*</li>
+					<li>*Photo*</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class = info_menu>
+		{% block info_menu %}
+
+		<div class = "info_main">
+			<div class="center_logo" >
+				<div class = "name_logo">Helpache</div>
+				<div class = "pulser_line"></div>
+			</div>
+		</div>
+		<div class = "recom_main">
+			<div class = "recom_div">
+				<div class = "recom_div_par">
+					<div>Создавайте гайды на разные темы и делитесь ими</div>
+					<img src="/media/rec_img2.svg">
+					<div>Пользуйтесь удобной системой поиска большего количества тем и гайдов и решайте свои проблемы легко и быстро</div>
+				</div>
+			</div>
+			<div class="recom_liner">
+				<img src="/media/rec_liner.svg">
+			</div>
+			<div class = "recom_div">
+				<div class = "recom_div_par">
+					<img src="/media/rec_img1.svg">
+					<div>Создаватйте цепочку тем или гайдов для хорошей сортировки материала</div>
+					<img src="/media/rec_img3.svg">
+				</div>
+			</div>
+		</div>
+
+		{% endblock info_menu %}
+	</div>
+
+</body>
+</html>
