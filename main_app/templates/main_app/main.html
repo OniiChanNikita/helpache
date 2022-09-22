@@ -4,7 +4,10 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'main_app\css\style.css' %}">
+	{% block title %}
 	<title>Helpache</title>
+	{% endblock title %}
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -38,8 +41,9 @@
 
 		<div class = "info_main">
 			<div class="center_logo" >
-				<div class = "name_logo">Helpache</div>
+				<div class = "name_logo">Helpache
 				<div class = "pulser_line"></div>
+				</div>
 			</div>
 		</div>
 		<div class = "recom_main">

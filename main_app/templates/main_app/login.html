@@ -1,0 +1,36 @@
+{% extends 'main_app/main.html' %}
+
+{% block title %}
+	<title>Login | Helpache</title>
+{% endblock title %}
+
+{% block info_menu %}
+<div class = "login_content">
+	<div class = "block_login", action = "/home/login/">
+		<form method="POST">
+			{% csrf_token %}
+			<div>
+				
+				<span class="text-center">login</span>
+				<div class="input-container">
+					{% for f in form %}
+					{% if f.label == 'username' %}
+					<input type="text" name="username" maxlength="150" required="" id="id_username">
+					{% endif %}
+					{% endfor %}
+					<label>Full Name</label>		
+				</div>
+				<div class="input-container">
+					{% for f in form %}
+					{% if f.label == 'password' %}
+						<input type="password" name="password" maxlength="255" required="" id="id_password">
+					{% endif %}
+					{% endfor %}
+					<label>Email</label>
+				</div>
+				<button type="submit" class="btn">submit</button>
+			<div>
+		</form>
+	</div>
+</div>
+{% endblock info_menu %}
