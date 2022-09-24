@@ -4,6 +4,9 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'main_app\css\style.css' %}">
+	<script src="{% static 'main_app\js\script.js' %}"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
 	{% block title %}
 	<title>Helpache</title>
 	{% endblock title %}
@@ -14,6 +17,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -29,8 +33,19 @@
 			</div>
 			<div class = "nav_menu_profile">
 				<ul>
-					<li>*Name*</li>
-					<li>*Photo*</li>
+					{% if request.user.is_authenticated %}
+						<div style = "display: flex; flex-direction: column; font-size: 15px;">
+							<a>{{request.user.username}}</a>
+							<a href = "{% url 'signout' %}">Sign out</a>
+						</div>
+						<li>*Photo*</li>
+					{% else %}
+						<li><a href = "{% url 'login' %}">Login</a></li>
+
+						<li><a href = "{% url 'signin' %}">Sign in</a></li>
+					{% endif %}
+					
+
 				</ul>
 			</div>
 		</div>
@@ -39,13 +54,17 @@
 	<div class = info_menu>
 		{% block info_menu %}
 
+
 		<div class = "info_main">
-			<div class="center_logo" >
-				<div class = "name_logo">Helpache
-				<div class = "pulser_line"></div>
+			<div class = "center_container">
+				<div class="typewriter" >
+					<h1 class = "name_logo">HELPACHE</h1>
 				</div>
 			</div>
 		</div>
+
+		
+
 		<div class = "recom_main">
 			<div class = "recom_div">
 				<div class = "recom_div_par">
