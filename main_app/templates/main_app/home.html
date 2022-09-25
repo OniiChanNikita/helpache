@@ -1,23 +1,52 @@
 {% extends 'main_app/main.html' %}
+{% load static %}
+
+{% block jquery_menu %}
+	<script src="{% static 'main_app\js\jquery-3.6.1.min.js'%}">
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {			
+    var p = $(".element_home_1");
+    var d = $(".element_home_2");
+    var r = $("#resize");   
+    var info = $("html") 
+    var unlock = false;   
+    $(document).mousemove(function(e) {
+    	if (unlock) {
+    		var curr_width = e.clientX
+        	p.css("width", curr_width);
+        	d.css("width", info.width() - curr_width)
+        }
+    });     
+    r.mousedown(function(e) {
+        curr_width = p.width();
+        unlock = true;
+        r.css("background-color", "rgba(0, 0, 0, 0.2)");
+    });
+  
+    $(document).mouseup(function(e) {
+        unlock = false;
+        r.css("background-color", "rgba(0, 0, 0, 0.1)");
+    });
+});
+	</script>
+{% endblock jquery_menu %}
+
 
 {% block main_nav %}
 
 {% endblock main_nav %}
 
 
-
-{% block info_menu %}
+{% block content_info %}
+<div class="info_menu", style = "flex-direction: row; justify-content: center; width: 100%; background-color: #6f6f6f">
 	<div class = "element_home_1">
+		<div style = "margin: auto;"><img src="/media/add_picture.svg" width = 300 style="z-index: -1"></div>
 	    <div id="resize"></div>
 	</div>
+
 	<div class = "element_home_2">
-		<h2>
-    	Текст для примера:
-		</h2>
-		   <br> 
-		<h3>
-		Добиваются успеха лишь те, кто всегда стремится помогать другим. Те, кто ищет лишь свою выгоду, обречены на поражение.
-		</h3>
-		<div id="debug"></div>
 	</div>
-{% endblock info_menu %}
+</div>
+{% endblock content_info %}

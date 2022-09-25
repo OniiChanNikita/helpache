@@ -5,7 +5,9 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'main_app\css\style.css' %}">
 	<script src="{% static 'main_app\js\script.js' %}"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+	
+	{% block jquery_menu %}
+	{% endblock jquery_menu %}
 
 	{% block title %}
 	<title>Helpache</title>
@@ -50,7 +52,7 @@
 			</div>
 		</div>
 	</div>
-
+	{% block content_info %}
 	<div class = info_menu>
 		{% block info_menu %}
 
@@ -87,6 +89,7 @@
 
 		{% endblock info_menu %}
 	</div>
+	{% endblock content_info %}
 
 </body>
 </html>
