@@ -14,27 +14,36 @@
 	<div class = "login_content">
 		<div class = "block_form" style = "width: 70%; height: 500px">
 			<form method="POST">
-				<div class="text-center">login</div>
+				<div class="text-center">Create Guide</div>
 				{% csrf_token %}
-					<div class = "inblock_login">
-
-					{% for f in form_add_guide %}
-						{% if f.label == "Title guide" %}	
-							<input class ="create_guide_input" type="text" name="fruit" placeholder="{{f.label}}..." />
+				<div class="inblock_login">
+					<div style="display:flex; justify-content: space-around; flex-direction: row; margin: auto; width: 90%">
+						{% for f in form_add_guide %}
+						{% if f.label == "Title guide" %}
+						<input class="create_guide_input" type="text" name="title_guide" maxlength="500" required="" placeholder="{{f.label}}..." id="id_title_guide">
 						{% endif %}
-					{% endfor %}
+						{% endfor %}
 
-					{% for f in form_add_guide %}
-						{% if f.label == "Categories" %}	
-							{{f}}
+						{% for f in form_add_guide %}
+						{% if f.label == "New category" %}
+						<input class="create_guide_input" placeholder="{{f.label}}..." type="text" name="new_category" maxlength="500" required="" id="id_new_category">
 						{% endif %}
-					{% endfor %}
+						{% endfor %}
 
-					{% for f in form_add_guide %}
-						{% if f.label == "Content guide" %}	
-							<textarea class ="create_guide_input" type="text" name="fruit" placeholder="Text.."></textarea>
+						{% for f in form_add_guide %}
+						{% if f.label == "Categories" %}
+						{{f}}
 						{% endif %}
-					{% endfor %}
+						{% endfor %}
+					</div>
+
+					<div style="margin: auto">
+						{% for f in form_add_guide %}
+						{% if f.label == "New category" %}
+						<textarea name="content_guide" cols="40" rows="10" required="" id="id_content_guide" placeholder="Text.."></textarea>
+						{% endif %}
+						{% endfor %}
+					</div>
 
 				</div>
 			</form>

@@ -308,6 +308,27 @@ ul{
 }
 
 
-.create_guide_input{
-	padding: 0.2em 0.5em;
+.create_guide_input {
+	display: block;
+	margin: 0;
+	padding: 0.8rem 1.6rem;
+	color: inherit;
+	width: 30%;
+	height: 45px;
+	font-family: inherit;
+	font-size: 2.1rem;
+	font-weight: inherit;
+	line-height: 1.8;
+	border: none;
+	border-radius: 0.4rem;
+	transition: box-shadow 0.25s;
 }
+
+	.create_guide_input::placeholder {
+		color: #B0BEC5;
+	}
+
+	.create_guide_input:focus {
+		outline: none;
+		box-shadow: 2px 2px 10px white;
+	}

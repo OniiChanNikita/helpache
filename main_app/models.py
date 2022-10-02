@@ -13,7 +13,7 @@ class InfoUserModel(models.Model):
 
 class GuideModel(models.Model):
 	creater = models.CharField(max_length = 255)
-	title_guide = models.CharField(max_length = 255)
+	title_guide = models.CharField(max_length = 500)
 	content_guide = models.TextField()
 	categories = models.ForeignKey("CategoriesGuide", on_delete = models.CASCADE)
 	date_create = models.DateTimeField(auto_now=True)
@@ -22,10 +22,12 @@ class GuideModel(models.Model):
 	def __str__(self):
 		return self.title_guide
 
+
+
 	def get_abs_url_guide(self):
 		return reverse("abs_guide", args = self.guide_slug)
 
-class CategoriesGuide(models.Model):
+class CategoriesGuide(models.Model):	
 	categories = models.CharField(max_length = 500)
 
 	def __str__(self):
