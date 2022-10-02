@@ -30,6 +30,8 @@
         r.css("background-color", "rgba(0, 0, 0, 0.1)");
     });
 });
+
+        
 	</script>
 {% endblock jquery_menu %}
 
@@ -42,10 +44,17 @@
 {% block content_info %}
 <div class="info_menu", style = "flex-direction: row; justify-content: center; width: 100%; background-color: #6f6f6f">
 	<div class = "element_home_1">
-		<div style = "margin: auto;"><img src="/media/add_picture.svg" width = 300 style="z-index: -1"></div>
-	    <div id="resize"></div>
-	</div>
+    <a style = "margin: auto;" href = "{% url 'create_guide' %}">
+		<div style = "margin: auto;">
+    		<img src="/media/Plus_Sign_clip_art.svg" width = 130 style="z-index: 1; filter: blur(1px);">
 
+    		<div style="color: #4f4f4f;">
+    			Add guide
+		</div>
+		</div>		
+    </a>
+    <div id="resize"></div>
+	</div>
 	<div class = "element_home_2">
 	</div>
 </div>

@@ -1,0 +1,45 @@
+{% extends "main_app/main.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	{% block title %}
+	<title>Create Guide | Helpache</title>
+	{% endblock title %}
+
+</head>
+<body>
+	{% block info_menu %}
+	<div class = "login_content">
+		<div class = "block_form" style = "width: 70%; height: 500px">
+			<form method="POST">
+				<div class="text-center">login</div>
+				{% csrf_token %}
+					<div class = "inblock_login">
+
+					{% for f in form_add_guide %}
+						{% if f.label == "Title guide" %}	
+							<input class ="create_guide_input" type="text" name="fruit" placeholder="{{f.label}}..." />
+						{% endif %}
+					{% endfor %}
+
+					{% for f in form_add_guide %}
+						{% if f.label == "Categories" %}	
+							{{f}}
+						{% endif %}
+					{% endfor %}
+
+					{% for f in form_add_guide %}
+						{% if f.label == "Content guide" %}	
+							<textarea class ="create_guide_input" type="text" name="fruit" placeholder="Text.."></textarea>
+						{% endif %}
+					{% endfor %}
+
+				</div>
+			</form>
+		</div>
+	</div>
+	{% endblock info_menu %}
+</body>
+</html>
