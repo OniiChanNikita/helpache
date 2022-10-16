@@ -9,14 +9,14 @@
 	<div class = "block_form">
 		
 		<form method="POST">
-			<div class="text-center">login</div>
+			<div class="text-center">Login</div>
 			{% csrf_token %}
 			<div class = "inblock_login">
 				
-				<div class="input-container">
+				<div class="input-container" >
 					{% for f in form %}
 					{% if f.label == 'username' %}
-					<input type="text" name="username" maxlength="150" required="" id="id_username" placeholder="{{f.label}}">
+					<input type="text" name="username_email" maxlength="150" required="" id="id_username_email" placeholder="{{f.label}}">
 					{% endif %}
 					{% endfor %}	
 				</div>

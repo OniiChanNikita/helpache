@@ -9,10 +9,17 @@
 	<div class = "block_form">
 		
 		<form method="POST">
-			<div class="text-center">sign in</div>
+			<div class="text-center">Sign in</div>
 			{% csrf_token %}
 			<div class = "inblock_login">
-				
+
+				<div class="input-container">
+					{% for f in form %}
+					{% if f.label == 'email' %}
+					<input type="text" name="email" maxlength="150" required="" id="id_email" placeholder="{{f.label}}">
+					{% endif %}
+					{% endfor %}
+				</div>
 				<div class="input-container">
 					{% for f in form %}
 					{% if f.label == 'username' %}
