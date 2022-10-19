@@ -12,12 +12,13 @@
 <body>
 	{% block info_menu %}
 	<div class = "login_content">
-		<div class = "block_form" style = "width:400px; height: 500px; background-color: #d9324d; box-shadow: 2px 2px 10px #d21f3c;">
+		<div class = "block_form" style = "width:500px; height: 550px; background-color: #d9324d; box-shadow: 2px 2px 10px #d21f3c;">
 			<form method="POST">
 				<div class="text-center" style = "color: white">Create Guide</div>
 				{% csrf_token %}
 				<div style = "display: flex; justify-content: center; width: 100%">
 					<div class="inblock_login" style = 'justify-content: space-around; width: 90%'>
+
 						{% for f in form_add_guide %}
 						{% if f.label == "Title guide" %}
 						<input class="create_guide_input" type="text" name="title_guide" maxlength="500" required="" placeholder="{{f.label}}..." id="id_title_guide">
@@ -26,23 +27,18 @@
 
 						{% for f in form_add_guide %}
 						{% if f.label == "New category" %}
-						<input class="create_guide_input" placeholder="{{f.label}}..." type="text" name="new_category" maxlength="500" required="" id="id_new_category">
+						<input class="create_guide_input" type="text" name="category" maxlength="500" required=""  id="id_category" placeholder="{{f.label}}...">
 						{% endif %}
 						{% endfor %}
-
-
 
 						{% for f in form_add_guide %}
 						{% if f.label == "New category" %}
-						<textarea class="create_guide_input" style = "border:1px solid #fff; resize: none" name="content_guide" cols="40" rows="10" required="" id="id_content_guide" placeholder="Text.."></textarea>
+						<textarea name="content_guide" cols="40" rows="10" required="" id="id_content_guide" class="create_guide_input" style = "border:1px solid #fff; resize: none" placeholder="Text.."></textarea>
 						{% endif %}
 						{% endfor %}
-
-						{% for f in form_add_guide %}
-						{% if f.label == "Categories" %}
-						{{f}}
-						{% endif %}
-						{% endfor %}
+						<div class = "block_btn_submit" style= 'width: 100%'>
+							<button class="btn_submit create_button">Button</button>
+						</div>
 					</div>
 				</div>
 			</form>

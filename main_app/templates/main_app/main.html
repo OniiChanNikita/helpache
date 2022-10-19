@@ -39,7 +39,8 @@
 							<a>{{request.user.username}}</a>
 							<a href = "{% url 'signout' %}">Sign out</a>
 						</div>
-						<li>*Photo*</li>
+						<li><img src="/media/none_logo.png" width = 32/></li>
+
 					{% else %}
 						<li><a href = "{% url 'login' %}">Log in</a></li>
 

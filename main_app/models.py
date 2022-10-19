@@ -15,9 +15,9 @@ class GuideModel(models.Model):
 	creater = models.CharField(max_length = 255)
 	title_guide = models.CharField(max_length = 500)
 	content_guide = models.TextField()
-	categories = models.ForeignKey("CategoriesGuide", on_delete = models.CASCADE)
+	categories = models.CharField(max_length=255)
 	date_create = models.DateTimeField(auto_now=True)
-	guide_slug = models.CharField(max_length = 50, default = "default")
+	guide_slug = models.CharField(max_length = 50, default = "default", null=True)
 
 	def __str__(self):
 		return self.title_guide

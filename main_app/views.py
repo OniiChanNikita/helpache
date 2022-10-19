@@ -14,8 +14,7 @@ from .forms import *
 def generate_random_string(length):
     letters = string.ascii_lowercase
     rand_string = ''.join(random.sample(letters, length))
-    print("Random string of length", length, "is:", rand_string)
-
+    return rand_string
 
 # Create your views here.
 def main(request):
@@ -24,6 +23,10 @@ def main(request):
 
 def home(request):
     if request.user.is_authenticated:
+        print(GuideModel.objects.filter(creater = request.user.username).first())
+        if GuideModel.objects.filter(creater = request.user.username).first() is not None:
+            print("U have guide")
+
         return render(request, "main_app/home.html")
     else:
         return redirect("main")
@@ -38,9 +41,10 @@ def log_in(request):
                 user = authenticate(username=request.POST["username_email"], password=request.POST["password"])
                 for i in range(len(request.POST["username_email"])):
                     if username_email[i] == "@":
-                        username = User.objects.filter(email = request.POST["username_email"]).first().username
+                        username = User.objects.filter(email=request.POST["username_email"]).first().username
                         print(username)
-                        user = authenticate(email=request.POST["username_email"], password=request.POST["password"], username = username)
+                        user = authenticate(email=request.POST["username_email"], password=request.POST["password"],
+                                            username=username)
 
                 if user is not None:
                     print("yaaa")
@@ -60,8 +64,10 @@ def sign_in(request):
             form = SigninForm(request.POST)
             if form.is_valid():
                 print("form login is valid")
-                User.objects.create_user(username=request.POST["username"], password=request.POST["password"], email = request.POST["email"])
-                user = authenticate(email = request.POST["email"], username=request.POST["username"], password=request.POST["password"])
+                User.objects.create_user(username=request.POST["username"], password=request.POST["password"],
+                                         email=request.POST["email"])
+                user = authenticate(email=request.POST["email"], username=request.POST["username"],
+                                    password=request.POST["password"])
                 print(user)
 
                 if user is not None:
@@ -84,19 +90,26 @@ def sign_out(request):
 
 def add_guide(request):
     if request.user.is_authenticated:
+        print("a")
         if request.method == 'POST':
+            print("a")
             form_add_guide = AddGuideForm(request.POST)
             if form_add_guide.is_valid():
                 print("form add guide is valid")
-
-                if GuideModel.objects.get(creater=request.user.username) is None:
+                print(GuideModel.objects.filter(title_guide = request.POST["title_guide"]).first())
+                if GuideModel.objects.filter(title_guide = request.POST["title_guide"]).first() is None:
+                    print("yesss")
+                    guide_slug = generate_random_string(10)
+                    print(guide_slug)
                     GuideModel.objects.create(creater=request.user.username, title_guide=request.POST["title_guide"],
                                               content_guide=request.POST["content_guide"],
                                               categories=request.POST["category"],
-                                              guide_slug=generate_random_string(10))
-                    redirect("guide", slug="")
+                                              guide_slug=guide_slug)
+                    redirect("guide")
 
                 return redirect("main")
         else:
             form_add_guide = AddGuideForm()
-    return render(request, "main_app/create_guide.html", {"form_add_guide": form_add_guide})
+        return render(request, "main_app/create_guide.html", {"form_add_guide": form_add_guide})
+    else:
+        return redirect("main")
